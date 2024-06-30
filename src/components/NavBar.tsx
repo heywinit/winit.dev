@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 
-function HomePage() {
+export default function NavBar() {
   return (
-    <div className="flex flex-col content-center justify-center h-screen w-screen select-none">
-      <h1 className="text-9xl text-center title">winit.</h1>
-      <nav className="flex flex-row justify-center space-x-2">
+    <nav className="flex flex-row items-center justify-between w-full px-20 pt-20 pb-10 select-none">
+      <div className="glow text-5xl">
+        <Link to={"/"}>winit.</Link>
+      </div>
+      <div className="flex flex-row space-x-2">
         {["about", "•", "projects", "•", "blog", "•", "socials"].map(
           (route, i) => (
             <h4
-              className={`text-3xl text-center glow ${
+              className={`text-2xl text-center glow ${
                 route !== "•" ? "hover:underline cursor-pointer" : ""
               }`}
               key={i}
@@ -17,9 +19,7 @@ function HomePage() {
             </h4>
           )
         )}
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
-
-export default HomePage;

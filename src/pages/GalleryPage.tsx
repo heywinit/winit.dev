@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 
-export default function BlogPage() {
+export default function GalaryPage() {
   return (
     <div className="flex flex-col h-screen w-screen">
       <NavBar />

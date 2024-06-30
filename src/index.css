@@ -4,6 +4,7 @@
 
 :root {
   font-family: "Cal Sans", sans-serif;
+  /* font-family: "Jetbrains Mono", sans-serif; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -20,7 +21,7 @@
 .glow {
   text-shadow: 0 0 5px #00ff88, 0 0 15px #00ac5c, 0 0 20px #00ac5c,
     0 0 40px #00ff88, 0 0 60px #00ac5c, 0 0 10px #00723d, 0 0 98px #ffffff;
-  color: #38ffa2;
+  color: #4bffab;
 }
 
 h1 {
@@ -42,6 +43,10 @@ body {
     rgba(0, 0, 0, 0.8) 13px,
     transparent 13px
   );
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
 }
 
 @-webkit-keyframes blink {
