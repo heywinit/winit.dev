@@ -35,13 +35,13 @@ export default function AboutPage() {
             explore new opportunities. feel free to reach out to me on{" "}
             <Link
               to="/socials"
-              className="underline focus:outline-none focus:glow"
+              className="underline focus:outline-none focus:glow hover:glow"
             >
               social media
             </Link>{" "}
             or via{" "}
             <a
-              className="underline focus:outline-none focus:glow"
+              className="underline focus:outline-none focus:glow hover:glow"
               href="mailto:heywinit@gmail.com"
               onClick={() => {
                 navigator.clipboard.writeText("heywinit@gmail.com");
@@ -56,21 +56,22 @@ export default function AboutPage() {
             <br />
             i'm also planning to launch a{" "}
             <a
-              className="underline focus:outline-none focus:glow"
+              className="underline focus:outline-none focus:glow hover:glow"
               href="https://www.youtube.com/@heywinit"
               onClick={() => {
                 navigator.clipboard.writeText("heywinit@gmail.com");
               }}
             >
-              email
+              youtube channel
             </a>{" "}
-            focusing on software development and aviation. stay tuned for some
-            insightful content.
+            focusing on{" "}
+            <span className="glow">software development and aviation</span>.
+            stay tuned for some insightful content.
             <br />
             <br /> as i continue to grow and learn, i'm always on the lookout
-            for new challenges and collaborations. whether you're interested in
-            tech, aviation, or just want to chat about anything, i'm here to
-            connect!
+            for <span className="glow">new challenges and collaborations</span>.
+            whether you're interested in tech, aviation, or just want to chat
+            about anything, <span className="glow">i'm here to connect!</span>
           </div>
         </div>
       </div>

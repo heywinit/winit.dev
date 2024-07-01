@@ -145,17 +145,17 @@ export default function ProjectsPage() {
             <div className="col-span-4">
               <div className="text-[#17c574] h-full w-full p-4">
                 <div className="flex space-x-2">
-                  <span>name:</span>
+                  <span className="glow">name:</span>
                   <h2 className="text-[#38ffa2] glow">
                     {selectedProject.name}
                   </h2>
                 </div>
                 <div className="flex space-x-2">
-                  <span>desc:</span>
+                  <span className="glow">desc:</span>
                   <span>{selectedProject.desc}</span>
                 </div>
                 <div className="flex flex-row space-x-2">
-                  <span>tags:</span>{" "}
+                  <span className="glow">tags:</span>{" "}
                   {selectedProject.tech.map((e, i) => (
                     <span key={i}>
                       {e}
@@ -163,10 +163,19 @@ export default function ProjectsPage() {
                     </span>
                   ))}
                 </div>
-                <p>status: {selectedProject.status}</p>
+
+                <div>
+                  <span className="glow">status: </span>
+                  {selectedProject.status}
+                </div>
                 <div className="flex space-x-2">
-                  <span>code:</span>
-                  <span>{selectedProject.link}</span>
+                  <span className="glow">code:</span>
+                  <a
+                    className="underline focus:outline-none focus:glow hover:glow"
+                    href={selectedProject.github}
+                  >
+                    github
+                  </a>
                 </div>
               </div>
             </div>
