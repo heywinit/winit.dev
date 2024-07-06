@@ -50,7 +50,7 @@ export default function Prompt() {
   };
 
   return (
-    <span className="text-[#38ffa2] glow px-4 py-2.5 space-x-2 select-none flex">
+    <span className="text-prim glow px-4 py-2.5 text-xl space-x-2 select-none flex">
       <span className="text-slate-100">$</span>
       <span>winit</span>
       <div

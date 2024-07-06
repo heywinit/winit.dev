@@ -6,15 +6,7 @@ export default function BlogPage() {
   const blogs = [
     {
       title: "blog 1",
-      content: "content 1",
-    },
-    {
-      title: "blog 2",
-      content: "content 2",
-    },
-    {
-      title: "blog 3",
-      content: "content 3",
+      content: "blogs coming soon",
     },
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -81,18 +73,18 @@ export default function BlogPage() {
   return (
     <div className="flex flex-col h-screen w-screen">
       <NavBar />
-      <div className="flex flex-grow h-full w-full px-20 pb-20">
-        <div className="flex flex-col w-full text-[#a0a0a0] border-2 border-green-500 mono font-semibold text-xl">
+      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-20 ">
+        <div className="flex flex-col w-full border-2 border-prim mono font-semibold text-xl">
           <Prompt />
-          <div className="text-[#17c574] border-t-[#17c574] h-full w-full grid grid-cols-5 border-t-2">
+          <div className="text-prim border-t-prim w-full h-full lg:grid lg:grid-cols-6 border-t-2">
             <div
               ref={blogListRef}
-              className="flex flex-col h-full border-r-2 border-r-[#17c574] select-none overflow-y-auto"
+              className="lg:flex flex-col col-span-1 h-full border-r-2 border-r-prim select-none overflow-y-auto hidden lg:visible"
             >
               {blogs.map((e, i) => (
                 <div
                   className={`w-full px-1 cursor-pointer ${
-                    i === selectedIndex ? "bg-[#17c574aa] text-white glow" : ""
+                    i === selectedIndex ? "bg-prima text-white glow" : ""
                   }`}
                   onClick={() => setSelectedIndex(i)}
                   key={i}
@@ -101,16 +93,38 @@ export default function BlogPage() {
                 </div>
               ))}
             </div>
-            <div className="col-span-4">
-              <div className="text-[#17c574] h-full w-full p-4">
-                <div className="space-y-2">
-                  <h2 className="text-[#38ffa2] glow">
-                    {blogs[selectedIndex]?.title}
-                  </h2>
-                  <div className="text-[#38ffa2]">
-                    {blogs[selectedIndex]?.content}
-                  </div>
-                </div>
+            <div className="col-span-5">
+              <div className="flex w-full items-center px-2 justify-between space-x-2 select-none lg:text-xl text-md">
+                <button
+                  onClick={() => {
+                    setSelectedIndex((prevIndex) =>
+                      prevIndex > 0 ? prevIndex - 1 : prevIndex
+                    );
+                  }}
+                >
+                  <span className={selectedIndex === 0 ? "" : "glow"}>
+                    {"<"}
+                  </span>
+                </button>
+                <h2 className="px-2 py-1.5 glow">
+                  {blogs[selectedIndex].title}
+                </h2>
+                <button
+                  onClick={() => {
+                    setSelectedIndex((prevIndex) =>
+                      prevIndex < blogs.length - 1 ? prevIndex + 1 : prevIndex
+                    );
+                  }}
+                >
+                  <span
+                    className={selectedIndex === blogs.length ? "" : "glow"}
+                  >
+                    {">"}
+                  </span>
+                </button>
+              </div>
+              <div className="flex w-full p-2 border-t-2 h-full border-t-prim">
+                content
               </div>
             </div>
           </div>

@@ -3,25 +3,36 @@
 @tailwind utilities;
 
 :root {
+  /* Color variables */
+  --text-color: rgba(255, 255, 255, 0.87);
+  --bg-color: #0e0e0e;
+  --glow-color-1: #00ff88;
+  --glow-color-2: #00ac5c;
+  --glow-color-3: #00723d;
+  --glow-text-color: #4bffab;
+  --blink-color-1: #111;
+  --blink-color-2: #38ffa2;
+
   font-family: "Cal Sans", sans-serif;
   /* font-family: "Jetbrains Mono", sans-serif; */
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0e0e0e;
-
+  color: var(--text-color);
+  background-color: var(--bg-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 @layer utilities {
   .glow {
-    text-shadow: 0 0 5px #00ff88, 0 0 15px #00ac5c, 0 0 20px #00ac5c,
-      0 0 40px #00ff88, 0 0 60px #00ac5c, 0 0 10px #00723d, 0 0 98px #ffffff;
-    color: #4bffab;
+    text-shadow: 0 0 5px var(--glow-color-1), 0 0 15px var(--glow-color-2),
+      0 0 20px var(--glow-color-2), 0 0 40px var(--glow-color-1),
+      0 0 60px var(--glow-color-2), 0 0 10px var(--glow-color-3),
+      0 0 98px #ffffff;
+    color: var(--glow-text-color);
   }
 }
 
@@ -29,6 +40,7 @@ h1 {
   animation: blink 12s infinite;
   -webkit-animation: blink 12s infinite;
 }
+
 /* 
 body {
   padding: 2vw;
@@ -36,7 +48,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-} */
+}
+*/
 
 .mono {
   font-family: "JetBrains Mono", monospace;
@@ -46,10 +59,9 @@ body {
   20%,
   24%,
   55% {
-    color: #111;
+    color: var(--blink-color-1);
     text-shadow: none;
   }
-
   0%,
   19%,
   21%,
@@ -58,9 +70,11 @@ body {
   54%,
   56%,
   100% {
-    text-shadow: 0 0 5px #00ff88, 0 0 15px #00ac5c, 0 0 20px #00ac5c,
-      0 0 40px #00ff88, 0 0 60px #00ac5c, 0 0 10px #00723d, 0 0 98px #ffffff;
-    color: #38ffa2;
+    text-shadow: 0 0 5px var(--glow-color-1), 0 0 15px var(--glow-color-2),
+      0 0 20px var(--glow-color-2), 0 0 40px var(--glow-color-1),
+      0 0 60px var(--glow-color-2), 0 0 10px var(--glow-color-3),
+      0 0 98px #ffffff;
+    color: var(--blink-color-2);
   }
 }
 
@@ -68,10 +82,9 @@ body {
   20%,
   24%,
   55% {
-    color: #111;
+    color: var(--blink-color-1);
     text-shadow: none;
   }
-
   0%,
   19%,
   21%,
@@ -80,8 +93,10 @@ body {
   54%,
   56%,
   100% {
-    text-shadow: 0 0 5px #00ff88, 0 0 15px #00ac5c, 0 0 20px #00ac5c,
-      0 0 40px #00ff88, 0 0 60px #00ac5c, 0 0 10px #00723d, 0 0 98px #ffffff;
-    color: #38ffa2;
+    text-shadow: 0 0 5px var(--glow-color-1), 0 0 15px var(--glow-color-2),
+      0 0 20px var(--glow-color-2), 0 0 40px var(--glow-color-1),
+      0 0 60px var(--glow-color-2), 0 0 10px var(--glow-color-3),
+      0 0 98px #ffffff;
+    color: var(--blink-color-2);
   }
 }

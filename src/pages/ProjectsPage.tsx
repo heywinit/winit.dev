@@ -122,18 +122,18 @@ export default function ProjectsPage() {
   return (
     <div className="flex flex-col h-screen w-screen">
       <NavBar />
-      <div className="flex flex-grow h-full w-full px-20 pb-20">
-        <div className="flex flex-col w-full text-[#a0a0a0] border-2 border-green-500 mono font-semibold text-xl">
+      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-20 ">
+        <div className="flex flex-col w-full border-2 border-prim mono font-semibold text-xl">
           <Prompt />
-          <div className="text-[#17c574] border-t-[#17c574] h-full w-full grid grid-cols-5 border-t-2">
+          <div className="text-prim border-t-prim w-full h-full lg:grid lg:grid-cols-6 border-t-2">
             <div
               ref={projectListRef}
-              className="flex flex-col h-full border-r-2 border-r-[#17c574] select-none overflow-y-auto"
+              className="lg:flex flex-col col-span-1 h-full border-r-2 border-r-prim select-none overflow-y-auto hidden lg:visible"
             >
               {projects.map((e, i) => (
                 <div
                   className={`w-full px-1 cursor-pointer ${
-                    i === selectedIndex ? "bg-[#17c574aa] text-white glow" : ""
+                    i === selectedIndex ? "bg-prima text-white glow" : ""
                   }`}
                   onClick={() => setSelectedIndex(i)}
                   key={i}
@@ -142,40 +142,69 @@ export default function ProjectsPage() {
                 </div>
               ))}
             </div>
-            <div className="col-span-4">
-              <div className="text-[#17c574] h-full w-full p-4">
-                <div className="flex space-x-2">
-                  <span className="glow">name:</span>
-                  <h2 className="text-[#38ffa2] glow">
-                    {selectedProject.name}
-                  </h2>
-                </div>
-                <div className="flex space-x-2">
-                  <span className="glow">desc:</span>
-                  <span>{selectedProject.desc}</span>
-                </div>
-                <div className="flex flex-row space-x-2">
-                  <span className="glow">tags:</span>{" "}
-                  {selectedProject.tech.map((e, i) => (
-                    <span key={i}>
-                      {e}
-                      {i !== selectedProject.tech.length - 1 ? "," : ""}
-                    </span>
-                  ))}
-                </div>
-
-                <div>
-                  <span className="glow">status: </span>
-                  {selectedProject.status}
-                </div>
-                <div className="flex space-x-2">
-                  <span className="glow">code:</span>
-                  <a
-                    className="underline focus:outline-none focus:glow hover:glow"
-                    href={selectedProject.github}
+            <div className="col-span-5 w-full">
+              <div className="text-prim lg:h-full h-max w-full">
+                <div className="flex w-full items-center px-2 justify-between space-x-2 select-none lg:text-xl text-md">
+                  <button
+                    onClick={() => {
+                      setSelectedIndex((prevIndex) =>
+                        prevIndex > 0 ? prevIndex - 1 : prevIndex
+                      );
+                    }}
                   >
-                    github
-                  </a>
+                    <span className={selectedIndex === 0 ? "" : "glow"}>
+                      {"<"}
+                    </span>
+                  </button>
+                  <h2 className="px-2 py-1.5 glow">{selectedProject.name}</h2>
+                  <button
+                    onClick={() => {
+                      setSelectedIndex((prevIndex) =>
+                        prevIndex < projects.length - 1
+                          ? prevIndex + 1
+                          : prevIndex
+                      );
+                    }}
+                  >
+                    <span
+                      className={
+                        selectedIndex === projects.length ? "" : "glow"
+                      }
+                    >
+                      {">"}
+                    </span>
+                  </button>
+                </div>
+                <div className="flex flex-col w-full p-2 space-y-2 lg:space-y-0 border-t-2 h-full border-t-prim">
+                  <div className="flex space-x-2">
+                    <span className="glow">desc:</span>
+                    <span>{selectedProject.desc}</span>
+                  </div>
+                  <div className="flex flex-row space-x-2">
+                    <span className="glow">tags:</span>
+                    <span>
+                      {selectedProject.tech.map((e, i) => (
+                        <>
+                          {e}
+                          {i !== selectedProject.tech.length - 1 ? "," : ""}
+                        </>
+                      ))}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span className="glow">status: </span>
+                    {selectedProject.status}
+                  </div>
+                  <div className="flex space-x-2">
+                    <span className="glow">code:</span>
+                    <a
+                      className="underline focus:outline-none focus:glow hover:glow"
+                      href={selectedProject.github}
+                    >
+                      github
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

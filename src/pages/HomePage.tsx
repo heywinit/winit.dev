@@ -7,7 +7,7 @@ function HomePage() {
       <MatrixBackground />
       <div className="flex flex-col content-center justify-center h-screen w-screen select-none absolute top-0">
         <h1 className="text-9xl text-center title">winit.</h1>
-        <nav className="flex flex-row justify-center space-x-2">
+        <nav className="flex flex-col lg:flex-row justify-center space-x-2 mt-16">
           {["about", "•", "projects", "•", "blog", "•", "socials"].map(
             (route, i) => (
               <h4
@@ -16,7 +16,11 @@ function HomePage() {
                 }`}
                 key={i}
               >
-                {route === "•" ? route : <Link to={`/${route}`}>{route}</Link>}
+                {route === "•" ? (
+                  <span className="hidden lg:visible">{route}</span>
+                ) : (
+                  <Link to={`/${route}`}>{route}</Link>
+                )}
               </h4>
             )
           )}

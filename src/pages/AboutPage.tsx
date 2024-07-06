@@ -6,10 +6,10 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col h-screen w-screen">
       <NavBar />
-      <div className="flex flex-grow h-full w-full px-20 pb-20">
-        <div className="flex flex-col w-full text-[#a0a0a0] border-2 border-green-500 mono font-semibold text-xl">
+      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-20 ">
+        <div className="flex flex-col w-full border-2 border-prim mono font-semibold text-xl overflow-auto">
           <Prompt />
-          <div className="text-[#17c574] h-full w-full border-t-2 border-t-[#17c574] p-4">
+          <div className="text-prim w-full border-t-2 border-t-prim p-2">
             hey, i'm <span className="glow">winit</span>, an 18-year-old{" "}
             <span className="glow">
               software developer and avionics enthusiast
@@ -27,12 +27,13 @@ export default function AboutPage() {
             homies.
             <br />
             <br /> beyond tech and aviation, i'm a dedicated{" "}
-            <span className="glow">music</span> enthusiast. You'll often find me
+            <span className="glow">music</span> enthusiast. you'll often find me
             listeing to <span className="glow">hip-hop</span>,{" "}
             <span className="glow">rnb</span>, and various niche genres.
             <br />
             <br /> i'm always eager to connect with like-minded individuals and
-            explore new opportunities. feel free to reach out to me on{" "}
+            explore new opportunities.{" "}
+            <span className="glow">feel free to reach out to me</span> on{" "}
             <Link
               to="/socials"
               className="underline focus:outline-none focus:glow hover:glow"
@@ -42,10 +43,9 @@ export default function AboutPage() {
             or via{" "}
             <a
               className="underline focus:outline-none focus:glow hover:glow"
-              href="mailto:heywinit@gmail.com"
-              onClick={() => {
-                navigator.clipboard.writeText("heywinit@gmail.com");
-              }}
+              onClick={() =>
+                navigator.clipboard.writeText("heywinit@gmail.com")
+              }
             >
               email
             </a>
