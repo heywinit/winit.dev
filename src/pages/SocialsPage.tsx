@@ -18,9 +18,9 @@ export default function SocialsPage() {
     },
     {
       title: "discord",
-      link: "https://www.instagram.com/heywinit",
+      link: "https://www.discord.gg/kstbmvGRXx",
     },
-    { title: "twitter", link: "https://www.twitter.com/heywinit" },
+    { title: "twitter", link: "https://www.twitter.com/hiwinit" },
     {
       title: "instagram",
       link: "https://www.instagram.com/heywinit",

@@ -186,7 +186,7 @@ export default function ProjectsPage() {
                       {selectedProject.tech.map((e, i) => (
                         <>
                           {e}
-                          {i !== selectedProject.tech.length - 1 ? "," : ""}
+                          {i !== selectedProject.tech.length - 1 ? ", " : ""}
                         </>
                       ))}
                     </span>

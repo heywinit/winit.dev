@@ -33,12 +33,13 @@ const GreenLine = styled.div`
   position: absolute;
   height: 6px;
   width: 100%;
-  background-color: #4bffab44;
+  background-color: var(--glow-text-color);
   top: ${(props) => props.top}%;
   animation: ${breathe} 2s ease-in-out infinite;
   transform-origin: center;
-  box-shadow: 0 0 10px #4bffab, 0 0 20px #4bffab, 0 0 30px #4bffab;
-  text-shadow: 0 0 10px #4bffab;
+  box-shadow: 0 0 10px var(--glow-text-color), 0 0 20px var(--glow-text-color),
+    0 0 30px var(--glow-text-color);
+  text-shadow: 0 0 10px var(--glow-text-color);
 `;
 
 const MatrixBackground = () => {
