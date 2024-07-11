@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col h-screen w-screen">
       <NavBar />
-      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-20 ">
+      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-10 ">
         <div className="flex flex-col w-full border-2 border-prim mono font-semibold text-xl overflow-auto">
           <Prompt />
           <div className="text-prim w-full border-t-2 border-t-prim p-2">

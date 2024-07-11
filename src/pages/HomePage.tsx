@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import MatrixBackground from "../components/MatrixBackground.tsx";
 
 function HomePage() {
   return (
     <>
-      {/* <MatrixBackground /> */}
-      <div className="flex flex-col content-center justify-center h-screen w-screen select-none absolute top-0">
+      <div className="flex flex-col content-center justify-center h-screen lg:h-screen w-screen select-none">
         <h1 className="text-9xl text-center title">winit.</h1>
-        <nav className="flex flex-col lg:flex-row justify-center space-x-2 mt-16">
+        <nav className="flex flex-col lg:flex-row justify-center space-x-2">
           {["about", "•", "projects", "•", "blog", "•", "socials"].map(
             (route, i) => (
               <h4

@@ -56,13 +56,16 @@ export default function ProjectsPage() {
     {
       name: "Goise",
       desc: "web app built with wasm that delivers a wide range of noises and textures using paramters.",
-      tech: ["golang", "webassembly", "svelte"],
+      tech: ["golang", "webassembly"],
       status: "work in progress",
       github: "https://github.com/heywinit/Goise",
     },
     {
       name: "Gort",
-      desc: "tui application that helps you manage your golang projects.",
+      desc: "web app for visualizing data structures, sorting and pathfinding algorithms.",
+      tech: ["golang", "webassembly"],
+      status: "work in progress",
+      github: "https://github.com/heywinit/Gort",
     },
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -133,7 +136,7 @@ export default function ProjectsPage() {
   return (
     <div className="flex flex-col h-screen w-screen">
       <NavBar />
-      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-20 ">
+      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-10 ">
         <div className="flex flex-col w-full border-2 border-prim mono font-semibold text-xl">
           <Prompt />
           <div className="text-prim border-t-prim w-full h-full lg:grid lg:grid-cols-6 border-t-2">

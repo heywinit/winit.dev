@@ -28,8 +28,8 @@ export default function Prompt() {
       const selection = window.getSelection();
       range.selectNodeContents(inputRef.current);
       range.collapse(false);
-      selection.removeAllRanges();
-      selection.addRange(range);
+      selection?.removeAllRanges();
+      selection?.addRange(range);
     }
   }, [isSmallScreen]);
 
@@ -43,7 +43,7 @@ export default function Prompt() {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: any) => {
     if (isSmallScreen) return;
 
     if (e.key === "Enter") {

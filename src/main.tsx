@@ -1,45 +1,74 @@
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
-import HomePage from "./pages/HomePage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import "cal-sans";
-import ProjectsPage from "./pages/ProjectsPage.tsx";
-import ErrorPage from "./pages/ErrorPage.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
-import SocialsPage from "./pages/SocialsPage.tsx";
-import BlogPage from "./pages/BlogPage.tsx";
-import GalaryPage from "./pages/GalleryPage.tsx";
+
+// Lazy load components
+const HomePage = lazy(() => import("./pages/HomePage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const SocialsPage = lazy(() => import("./pages/SocialsPage"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const GalleryPage = lazy(() => import("./pages/GalleryPage"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
-    errorElement: <ErrorPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <HomePage />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ErrorPage />
+      </Suspense>
+    ),
   },
   {
     path: "/about",
-    element: <AboutPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AboutPage />
+      </Suspense>
+    ),
   },
   {
     path: "/projects",
-    element: <ProjectsPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ProjectsPage />
+      </Suspense>
+    ),
   },
   {
     path: "/blog",
-    element: <BlogPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <BlogPage />
+      </Suspense>
+    ),
   },
   {
-    path: "/galary",
-    element: <GalaryPage />,
+    path: "/gallery",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <GalleryPage />
+      </Suspense>
+    ),
   },
   {
     path: "/socials",
-    element: <SocialsPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <SocialsPage />
+      </Suspense>
+    ),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <>
-    <RouterProvider router={router} />
-  </>
+  <RouterProvider router={router} />
 );
