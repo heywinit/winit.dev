@@ -7,23 +7,33 @@ export default function SocialsPage() {
     {
       title: "youtube",
       link: "https://www.youtube.com/@heywinit",
+      content: "I make videos about programming and tech. Subscribe!",
     },
     {
       title: "github",
       link: "https://www.github.com/heywinit",
+      content: "Check out my projects and contributions.",
     },
     {
       title: "email",
       link: "mailto:heywinit@gmail.com",
+      content: "Feel free to reach out to me for any inquiries.",
     },
     {
       title: "discord",
       link: "https://www.discord.gg/kstbmvGRXx",
+      content: "Join my server to chat with me and other members.",
     },
-    { title: "twitter", link: "https://www.twitter.com/hiwinit" },
+    {
+      title: "twitter",
+      link: "https://www.twitter.com/hiwinit",
+      content: "Follow me for updates and random thoughts.",
+    },
     {
       title: "instagram",
       link: "https://www.instagram.com/heywinit",
+      content:
+        "Follow me for random programming reels and posts (i'm funny btw, atleast my mom said that).",
     },
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -33,11 +43,13 @@ export default function SocialsPage() {
     const handleKeyDown = (event: KeyboardEvent) => {
       switch (event.key) {
         case "ArrowUp":
+        case "ArrowLeft":
           setSelectedIndex((prevIndex) =>
             prevIndex > 0 ? prevIndex - 1 : prevIndex
           );
           break;
         case "ArrowDown":
+        case "ArrowRight":
           setSelectedIndex((prevIndex) =>
             prevIndex < socials.length - 1 ? prevIndex + 1 : prevIndex
           );
@@ -129,7 +141,9 @@ export default function SocialsPage() {
                 </div>
               </div>
               <div className="flex w-full p-2 border-t-2 h-full border-t-prim">
-                content
+                <div className="w-full h-full">
+                  {socials[selectedIndex]?.content}
+                </div>
               </div>
             </div>
           </div>

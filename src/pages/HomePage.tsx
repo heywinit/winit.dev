@@ -4,7 +4,7 @@ import MatrixBackground from "../components/MatrixBackground.tsx";
 function HomePage() {
   return (
     <>
-      <MatrixBackground />
+      {/* <MatrixBackground /> */}
       <div className="flex flex-col content-center justify-center h-screen w-screen select-none absolute top-0">
         <h1 className="text-9xl text-center title">winit.</h1>
         <nav className="flex flex-col lg:flex-row justify-center space-x-2 mt-16">

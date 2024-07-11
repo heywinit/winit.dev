@@ -6,13 +6,24 @@ export default function Prompt() {
   const [currentPage, setCurrentPage] = useState(
     window.location.href.split("/")[3] || "home"
   );
-  const [isEditing, setIsEditing] = useState(true); // Set to true by default
+  const [isEditing, setIsEditing] = useState(true);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (inputRef.current) {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 640); // Adjust this value as needed
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (inputRef.current && !isSmallScreen) {
       inputRef.current.focus();
-      // Place the cursor at the end of the text
       const range = document.createRange();
       const selection = window.getSelection();
       range.selectNodeContents(inputRef.current);
@@ -20,17 +31,21 @@ export default function Prompt() {
       selection.removeAllRanges();
       selection.addRange(range);
     }
-  }, []); // Empty dependency array means this runs once on mount
+  }, [isSmallScreen]);
 
   const handleBlur = () => {
     setIsEditing(false);
   };
 
   const handleFocus = () => {
-    setIsEditing(true);
+    if (!isSmallScreen) {
+      setIsEditing(true);
+    }
   };
 
   const handleKeyDown = (e) => {
+    if (isSmallScreen) return;
+
     if (e.key === "Enter") {
       e.preventDefault();
       const input = e.target.textContent.trim().toLowerCase();
@@ -42,7 +57,6 @@ export default function Prompt() {
         navigate(`/${input === "home" ? "" : input}`);
         setCurrentPage(input);
       } else {
-        // Reset to current page if input is invalid
         e.target.textContent = currentPage;
       }
       setIsEditing(false);
@@ -56,7 +70,7 @@ export default function Prompt() {
       <div
         ref={inputRef}
         className="focus:outline-none"
-        contentEditable={true}
+        contentEditable={!isSmallScreen}
         onBlur={handleBlur}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}

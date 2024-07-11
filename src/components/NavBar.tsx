@@ -23,8 +23,8 @@ export default function NavBar() {
   const navItems = ["about", "projects", "blog", "socials"];
 
   return (
-    <nav className="flex flex-row items-center justify-between w-full px-4 md:px-20 pt-6 md:pt-20 pb-4 md:pb-10 select-none">
-      <div className="glow text-3xl md:text-5xl">
+    <nav className="flex flex-row items-center justify-between w-full px-4 py-2 lg:px-20 lg:pt-10 lg:pb-5 select-none">
+      <div className="glow lg:text-3xl text-5xl">
         <Link to="/" className="focus:outline-none focus:underline">
           winit.
         </Link>
@@ -33,7 +33,7 @@ export default function NavBar() {
         <div className="relative">
           <button
             onClick={toggleMenu}
-            className="text-2xl focus:outline-none glow"
+            className="text-4xl focus:outline-none glow"
           >
             ☰
           </button>

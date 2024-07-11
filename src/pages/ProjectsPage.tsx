@@ -34,7 +34,7 @@ export default function ProjectsPage() {
     },
     {
       name: "JesensiWeb",
-      desc: "web App that provides information about defence technologies.",
+      desc: "web app that provides information about defence technologies.",
       tech: ["react", "tailwindcss"],
       status: "work in progress",
       github: "https://github.com/heywinit/JesensiWeb",
@@ -52,6 +52,17 @@ export default function ProjectsPage() {
       tech: ["golang", "minecraft protocl", "charm"],
       status: "work in progress",
       github: "https://github.com/heywinit/Minecomm",
+    },
+    {
+      name: "Goise",
+      desc: "web app built with wasm that delivers a wide range of noises and textures using paramters.",
+      tech: ["golang", "webassembly", "svelte"],
+      status: "work in progress",
+      github: "https://github.com/heywinit/Goise",
+    },
+    {
+      name: "Gort",
+      desc: "tui application that helps you manage your golang projects.",
     },
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
