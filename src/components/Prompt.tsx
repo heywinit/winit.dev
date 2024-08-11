@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 export default function Prompt() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(
-    window.location.href.split("/")[3] || "home"
+    window.location.href.split("/")[3] || "about"
   );
-  const [isEditing, setIsEditing] = useState(true);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [_, setIsEditing] = useState(true);
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
   const inputRef = useRef(null);
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 640); // Adjust this value as needed
+      setIsLargeScreen(window.innerWidth < 640); // Adjust this value as needed
     };
 
     checkScreenSize();
@@ -22,7 +22,8 @@ export default function Prompt() {
   }, []);
 
   useEffect(() => {
-    if (inputRef.current && !isSmallScreen) {
+    if (inputRef.current && !isLargeScreen) {
+      //@ts-ignore
       inputRef.current.focus();
       const range = document.createRange();
       const selection = window.getSelection();
@@ -31,20 +32,20 @@ export default function Prompt() {
       selection?.removeAllRanges();
       selection?.addRange(range);
     }
-  }, [isSmallScreen]);
+  }, [isLargeScreen]);
 
   const handleBlur = () => {
     setIsEditing(false);
   };
 
   const handleFocus = () => {
-    if (!isSmallScreen) {
+    if (!isLargeScreen) {
       setIsEditing(true);
     }
   };
 
   const handleKeyDown = (e: any) => {
-    if (isSmallScreen) return;
+    if (isLargeScreen) return;
 
     if (e.key === "Enter") {
       e.preventDefault();
@@ -70,7 +71,7 @@ export default function Prompt() {
       <div
         ref={inputRef}
         className="focus:outline-none"
-        contentEditable={!isSmallScreen}
+        contentEditable={!isLargeScreen}
         onBlur={handleBlur}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}

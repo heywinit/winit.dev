@@ -4,14 +4,11 @@
 
 :root {
   /* Color variables */
-  --text-color: rgba(255, 255, 255, 0.87);
-  --bg-color: #0e0e0e;
-  --glow-color-1: #00ff88;
-  --glow-color-2: #00ac5c;
-  --glow-color-3: #00723d;
-  --glow-text-color: #4bffab;
-  --blink-color-1: #111;
-  --blink-color-2: #38ffa2;
+  --glow-color: #ff5500;
+  --glow-spread-color: #ff5500;
+  --enhanced-glow-color: #ff5500;
+  --bg-color: #010000;
+
 
   font-family: "Cal Sans", sans-serif;
   /* font-family: "Jetbrains Mono", sans-serif; */
@@ -28,11 +25,12 @@
 
 @layer utilities {
   .glow {
-    text-shadow: 0 0 5px var(--glow-color-1), 0 0 15px var(--glow-color-2),
-      0 0 20px var(--glow-color-2), 0 0 40px var(--glow-color-1),
-      0 0 60px var(--glow-color-2), 0 0 10px var(--glow-color-3),
-      0 0 98px #ffffff;
-    color: var(--glow-text-color);
+    color: var(--glow-color);
+    /* text-shadow: 0 0 7px var(--glow-spread-color),
+      0 0 10px var(--glow-spread-color), 0 0 21px var(--glow-spread-color),
+      0 0 42px var(--glow-color), 0 0 82px var(--glow-color),
+      0 0 92px var(--glow-color), 0 0 102px var(--glow-color),
+      0 0 151px var(--glow-color); */
   }
 }
 

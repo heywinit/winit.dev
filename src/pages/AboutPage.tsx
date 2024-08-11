@@ -1,77 +1,168 @@
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Prompt from "../components/Prompt";
+import { ReactNode } from "react";
+import React from "react";
 
-export default function AboutPage() {
+
+const HighlightedText = ({
+  children,
+  wordsToHighlight,
+  highlightClass,
+}: {
+  children: ReactNode;
+  wordsToHighlight: string[];
+  highlightClass: string;
+}) => {
+  const highlightWords = (node: ReactNode): ReactNode => {
+    if (typeof node === "string") {
+      const regex = new RegExp(`\\b(${wordsToHighlight.join("|")})\\b`, "gi");
+      const parts = node.split(regex);
+      return parts.map((part, index) =>
+        regex.test(part) ? (
+          <span key={index} className={highlightClass}>
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      );
+    }
+
+    if (React.isValidElement(node)) {
+      return React.cloneElement(
+        node,
+        { ...node.props },
+        React.Children.map(node.props.children, highlightWords)
+      );
+    }
+
+    return node;
+  };
+
+  return <>{React.Children.map(children, highlightWords)}</>;
+};
+
+export default function BlogPage() {
+const wordsToHighlight = [
+    "software developer",
+    "avionics enthusiast",
+    "india",
+    "computer science",
+    "coding",
+    "researching about fighter jets",
+    "rockets, radars and missiles",
+    "f-117 nighthawk",
+    "avid music enjoyer",
+    "minecomm",
+    "rootus",
+    "more",
+    "eager to connect",
+    "explore new opportunities",
+    "social media",
+    "email",
+    "youtube channel",
+    "i'm here to connect",
+
+  ];
+  const highlightClass = "glow";
+
   return (
     <div className="flex flex-col h-screen w-screen">
       <NavBar />
-      <div className="flex flex-grow h-full w-full px-4 pb-4 lg:px-20 lg:pb-10 ">
-        <div className="flex flex-col w-full border-2 border-prim mono font-semibold text-xl overflow-auto">
+      <div className="flex max-h-screen h-screen w-full px-4 pb-4 lg:px-20 lg:pb-10 overflow-y-scroll">
+        <div className="flex flex-col w-full border-2 border-prim mono font-semibold text-xl overflow-scroll">
           <Prompt />
-          <div className="text-prim w-full border-t-2 border-t-prim p-2">
-            hey, i'm <span className="glow">winit</span>, an 18-year-old{" "}
-            <span className="glow">
-              software developer and avionics enthusiast
-            </span>{" "}
-            from <span className="glow">india</span>.<br />
-            <br /> i'm currently pursuing a degree in{" "}
-            <span className="glow">computer science</span>, driven by my passion
-            for <span className="glow">software development</span>,{" "}
-            <span className="glow">aviation</span>, and{" "}
-            <span className="glow">continuous learning</span>. my days are
-            filled with <span className="glow">coding</span>, researching{" "}
-            <span className="glow">fighter jets</span>, and studying{" "}
-            <span className="glow">payload delivery systems</span>. if you're a
-            fan of the <span className="glow">f-117 nighthawk</span>, we're
-            homies.
-            <br />
-            <br /> beyond tech and aviation, i'm a dedicated{" "}
-            <span className="glow">music</span> enthusiast. you'll often find me
-            listeing to <span className="glow">hip-hop</span>,{" "}
-            <span className="glow">rnb</span>, and various niche genres.
-            <br />
-            <br /> i'm always eager to connect with like-minded individuals and
-            explore new opportunities.{" "}
-            <span className="glow">feel free to reach out to me</span> on{" "}
-            <Link
-              to="/socials"
-              className="underline focus:outline-none focus:glow hover:glow"
+          <div className="text-[#ffffffdd] text-left w-full border-t-2 border-t-prim p-2 overflow-y-scroll">
+            <HighlightedText
+              wordsToHighlight={wordsToHighlight}
+              highlightClass={highlightClass}
             >
-              social media
-            </Link>{" "}
-            or via{" "}
-            <a
-              className="underline focus:outline-none focus:glow hover:glow"
-              onClick={() =>
-                navigator.clipboard.writeText("heywinit@gmail.com")
-              }
-            >
-              email
-            </a>
-            . this website is a product of a few hours of rawdogging react and
-            tailwind when boredom struck. i'm open to suggestions and bug
-            reports, so don't hesitate to let me know if you spot anything!
-            <br />
-            <br />
-            i'm also planning to launch a{" "}
-            <a
-              className="underline focus:outline-none focus:glow hover:glow"
-              href="https://www.youtube.com/@heywinit"
-              onClick={() => {
-                navigator.clipboard.writeText("heywinit@gmail.com");
-              }}
-            >
-              youtube channel
-            </a>{" "}
-            focusing on{" "}
-            <span className="glow">software development and aviation</span>.
-            stay tuned for some insightful content.
-            <br />
-            <br /> as i continue to grow and learn, i'm always on the lookout
-            for <span className="glow">new challenges and collaborations</span>.
-            whether you're interested in tech, aviation, or just want to chat
-            about anything, <span className="glow">i'm here to connect!</span>
+              <p>
+                hello there, i'm
+                <span className="glow"> winit</span>, an 18-year-old software
+                developer and avionics enthusiast from india. i'm currently
+                pursuing a degree in computer science, driven by my passion for
+                software development, aviation, and continuous learning.
+              </p>
+              <br />
+              <p>
+                my days are filled with coding, researching about fighter jets, and
+                studying about rockets, radars and missiles. if you're a fan of the f-117
+                nighthawk, we're homies.
+              </p>
+              <br />
+              <p>
+                beyond tech and aviation, i'm an avid music enjoyer.
+                you'll often find me listening to hip-hop, rnb, and various
+                niche genres.
+              </p>
+              <br />
+              <p>
+                currently i'm workin on a few projects like{" "}
+                <a
+                  className="underline focus:outline-none focus:text-p hover:text-p hover:cursor-pointer"
+                  href="https://github.com/heywinit/minecomm"
+                  target="_blank"
+                >
+                  minecomm
+                </a>
+                {", "}
+                <a
+                  className="underline focus:outline-none focus:text-p hover:text-p hover:cursor-pointer"
+                  href="https://github.com/heywinit/rootus"
+                  target="_blank"
+                >
+                  rootus
+                </a>
+                {", and "}
+                <Link
+                  className="underline focus:outline-none focus:text-p hover:text-p hover:cursor-pointer"
+                  to="/projects"
+                >
+                  more.
+                </Link>
+              </p>
+              <br />
+              <p>
+                i'm always eager to connect with like-minded individuals and
+                explore new opportunities. feel free to reach out to me on{" "}
+                <a
+                  // to="/socials"
+                  className="underline focus:outline-none focus:text-p hover:text-p hover:cursor-pointer"
+                >
+                  social media
+                </a>{" "}
+                or via{" "}
+                <a
+                  className="underline focus:outline-none focus:text-p hover:text-p hover:cursor-pointer"
+                  onClick={() =>
+                    navigator.clipboard.writeText("heywinit@gmail.com")
+                  }
+                >
+                  email
+                </a>
+                . i also have a{" "}
+                <a
+                  className="underline focus:outline-none focus:text-p hover:text-p hover:cursor-pointer"
+                  href="https://www.youtube.com/@heywinit"
+                  onClick={() => {
+                    navigator.clipboard.writeText("heywinit@gmail.com");
+                  }}
+                >
+                  youtube channel
+                </a>{" "}
+                focusing on software development and aviation. stay tuned for
+                some insightful content.
+              </p>
+              <br />
+              <p>
+                as i continue to grow and learn, i'm always on the lookout for
+                new challenges and collaborations. whether you're interested in
+                tech, aviation, or just want to chat about anything, i'm here to
+                connect!
+              </p>
+            </HighlightedText>
           </div>
         </div>
       </div>

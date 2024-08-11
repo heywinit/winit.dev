@@ -5,68 +5,75 @@ import Prompt from "../components/Prompt";
 export default function ProjectsPage() {
   const projects = [
     {
-      name: "StatisfyAPI",
-      desc: "api for my music taste visualization app that presents your listening habits in fancy charts and graphs.",
-      tech: ["golang", "spotify web api", "mysql"],
-      status: "work in progress",
-      github: "https://github.com/heywinit/StatisfyAPI",
-    },
-    {
-      name: "StatisfyApp",
-      desc: "mobile app that visualizes your spotify listening habits in fancy charts and graphs.",
-      tech: ["react native", "react-native-paper", "d3.js"],
-      status: "work in progress",
-      github: "https://github.com/heywinit/StatisfyApp",
-    },
-    {
-      name: "DiscoDB",
+      name: "discodb",
       desc: "database that stores data in discord allowing for unlimited storage.",
       tech: ["golang", "discordgo"],
       status: "work in progress",
-      github: "https://github.com/heywinit/DiscoDB",
+      github: "https://github.com/heywinit/discodb",
     },
     {
-      name: "JesensiAPI",
+      name: "statisfy-api",
+      desc: "api for my music taste visualization app that presents your listening habits in fancy charts and graphs.",
+      tech: ["golang", "spotify web api", "mysql"],
+      status: "work in progress",
+      github: "https://github.com/heywinit/statisfy-api",
+    },
+    {
+      name: "statisfy-app",
+      desc: "mobile app that visualizes your spotify listening habits in fancy charts and graphs.",
+      tech: ["react native", "expo", "react-native-paper", "d3.js"],
+      status: "work in progress",
+      github: "https://github.com/heywinit/statisfy-app",
+    },
+    {
+      name: "jesensi-api",
       desc: "api for my defence technology encyclopedia web app.",
       tech: ["springboot", "java", "mongodb"],
       status: "work in progress",
-      github: "https://github.com/heywinit/JesensiAPI",
+      github: "https://github.com/heywinit/jesensi-api",
     },
     {
-      name: "JesensiWeb",
+      name: "jesensi-web",
       desc: "web app that provides information about defence technologies.",
       tech: ["react", "tailwindcss"],
       status: "work in progress",
-      github: "https://github.com/heywinit/JesensiWeb",
+      github: "https://github.com/heywinit/jesensi-web",
     },
     {
-      name: "Minechek",
+      name: "minechek",
       desc: "tui minecraft server management tool",
       tech: ["golang", "minecraft protocol", "spigot", "paper", "charm"],
       status: "work in progress",
-      github: "https://github.com/heywinit/Minechek",
+      github: "https://github.com/heywinit/minechek",
     },
     {
-      name: "Minecomm",
-      desc: "tui application used to communicate with minecraft servers using the minecraft protocol.",
-      tech: ["golang", "minecraft protocl", "charm"],
+      name: "gomine",
+      desc: "minecraft protocol library for go",
+      tech: ["golang", "minecraft protocol"],
       status: "work in progress",
-      github: "https://github.com/heywinit/Minecomm",
+      github: "https://github.com/heywinit/gomine",
     },
     {
-      name: "Goise",
+      name: "goise",
       desc: "web app built with wasm that delivers a wide range of noises and textures using paramters.",
       tech: ["golang", "webassembly"],
       status: "work in progress",
       github: "https://github.com/heywinit/Goise",
     },
     {
-      name: "Gort",
+      name: "gort",
       desc: "web app for visualizing data structures, sorting and pathfinding algorithms.",
       tech: ["golang", "webassembly"],
       status: "work in progress",
       github: "https://github.com/heywinit/Gort",
     },
+    {
+      name: "heytab",
+      desc: "firefox extension that replaces new tab page with a more customized dashboard.",
+      tech: ["javascript", "webextension api", "react", "tailwindcss"],
+      status: "work in progress",
+      github: "https://github.com/heywinit/heytab"
+    }
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selectedProject = projects[selectedIndex];
@@ -101,6 +108,7 @@ export default function ProjectsPage() {
     const handleWheel = (event: WheelEvent) => {
       if (
         projectListRef.current &&
+        //@ts-ignore
         projectListRef.current.contains(event.target)
       ) {
         event.preventDefault();
@@ -123,6 +131,7 @@ export default function ProjectsPage() {
 
   useEffect(() => {
     if (projectListRef.current) {
+      //@ts-ignore
       const selectedElement = projectListRef.current.children[selectedIndex];
       if (selectedElement) {
         selectedElement.scrollIntoView({
@@ -147,7 +156,7 @@ export default function ProjectsPage() {
               {projects.map((e, i) => (
                 <div
                   className={`w-full px-1 cursor-pointer ${
-                    i === selectedIndex ? "bg-prima text-white glow" : ""
+                    i === selectedIndex ? "bg-prima text-white" : ""
                   }`}
                   onClick={() => setSelectedIndex(i)}
                   key={i}
@@ -157,7 +166,7 @@ export default function ProjectsPage() {
               ))}
             </div>
             <div className="col-span-5 w-full">
-              <div className="text-prim lg:h-full h-max w-full">
+              <div className="text-[#fff] lg:h-full h-max w-full">
                 <div className="flex w-full items-center px-2 justify-between space-x-2 select-none lg:text-xl text-md">
                   <button
                     onClick={() => {
@@ -182,7 +191,7 @@ export default function ProjectsPage() {
                   >
                     <span
                       className={
-                        selectedIndex === projects.length ? "" : "glow"
+                        selectedIndex === projects.length-1 ? "" : "glow"
                       }
                     >
                       {">"}

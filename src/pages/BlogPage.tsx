@@ -7,6 +7,9 @@ export default function BlogPage() {
     {
       title: "blog 1",
       content: "blogs coming soon",
+    },{
+      title: "blog 2",
+      content: "blogs coming soon",
     },
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -39,6 +42,7 @@ export default function BlogPage() {
     };
 
     const handleWheel = (event: WheelEvent) => {
+      //@ts-ignore
       if (blogListRef.current && blogListRef.current.contains(event.target)) {
         event.preventDefault();
         const delta = Math.sign(event.deltaY);
@@ -60,6 +64,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     if (blogListRef.current) {
+      //@ts-ignore
       const selectedElement = blogListRef.current.children[selectedIndex];
       if (selectedElement) {
         selectedElement.scrollIntoView({
@@ -94,12 +99,14 @@ export default function BlogPage() {
               ))}
             </div>
             <div className="col-span-5">
-              <div className="flex w-full items-center px-2 justify-between space-x-2 select-none lg:text-xl text-md">
+              <div className="flex text-[#fff] w-full items-center px-2 justify-between space-x-2 select-none lg:text-xl text-md">
                 <button
                   onClick={() => {
                     setSelectedIndex((prevIndex) =>
-                      prevIndex > 0 ? prevIndex - 1 : prevIndex
-                    );
+                        prevIndex < blogs.length - 1
+                          ? prevIndex + 1
+                          : prevIndex
+                      );
                   }}
                 >
                   <span className={selectedIndex === 0 ? "" : "glow"}>
@@ -117,14 +124,14 @@ export default function BlogPage() {
                   }}
                 >
                   <span
-                    className={selectedIndex === blogs.length ? "" : "glow"}
+                    className={selectedIndex === blogs.length -1 ? "" : "glow"}
                   >
                     {">"}
                   </span>
                 </button>
               </div>
-              <div className="flex w-full p-2 border-t-2 h-full border-t-prim">
-                content
+              <div className="flex w-full text-[#fff] p-2 border-t-2 h-full border-t-prim">
+                {blogs[selectedIndex].content}
               </div>
             </div>
           </div>

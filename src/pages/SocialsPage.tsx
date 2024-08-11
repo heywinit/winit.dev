@@ -7,33 +7,33 @@ export default function SocialsPage() {
     {
       title: "youtube",
       link: "https://www.youtube.com/@heywinit",
-      content: "I make videos about programming and tech. Subscribe!",
+      content: "i make videos about programming and tech.",
     },
     {
       title: "github",
       link: "https://www.github.com/heywinit",
-      content: "Check out my projects and contributions.",
+      content: "check out my projects and contributions.",
     },
     {
       title: "email",
       link: "mailto:heywinit@gmail.com",
-      content: "Feel free to reach out to me for any inquiries.",
+      content: "feel free to reach out to me for any inquiries.",
     },
     {
       title: "discord",
-      link: "https://www.discord.gg/kstbmvGRXx",
-      content: "Join my server to chat with me and other members.",
+      link: "https://discord.gg/GHTxbaeU",
+      content: "join my server to chat with me and other members.",
     },
     {
       title: "twitter",
       link: "https://www.twitter.com/hiwinit",
-      content: "Follow me for updates and random thoughts.",
+      content: "follow me for updates and random thoughts.",
     },
     {
       title: "instagram",
       link: "https://www.instagram.com/heywinit",
       content:
-        "Follow me for random programming reels and posts (i'm funny btw, atleast my mom said that).",
+        "follow me for random programming reels and posts. (i'm funny btw, atleast my mom thinks so)",
     },
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -70,6 +70,7 @@ export default function SocialsPage() {
     const handleWheel = (event: WheelEvent) => {
       if (
         socialsListRef.current &&
+        //@ts-ignore
         socialsListRef.current.contains(event.target)
       ) {
         event.preventDefault();
@@ -92,6 +93,7 @@ export default function SocialsPage() {
 
   useEffect(() => {
     if (socialsListRef.current) {
+      //@ts-ignore
       const selectedElement = socialsListRef.current.children[selectedIndex];
       if (selectedElement) {
         selectedElement.scrollIntoView({
@@ -126,22 +128,44 @@ export default function SocialsPage() {
               ))}
             </div>
             <div className="col-span-5">
-              <div className="text-prim h-max w-full px-2 py-1.5">
-                <div className="flex w-full justify-between space-x-2 select-none lg:text-xl text-md">
-                  <h2 className="glow">{socials[selectedIndex]?.title}</h2>
-                  <div className="cursor-pointer">
-                    <a
-                      className="underline focus:outline-none focus:glow hover:glow"
-                      href={socials[selectedIndex]?.link}
-                      target="_blank"
-                    >
-                      link
-                    </a>
-                  </div>
-                </div>
+              <div className="flex w-full text-[#fff] items-center px-2 justify-between space-x-2 select-none lg:text-xl text-md">
+                <button
+                  onClick={() => {
+                    setSelectedIndex((prevIndex) =>
+                      prevIndex > 0 ? prevIndex - 1 : prevIndex
+                    );
+                  }}
+                >
+                  <span className={selectedIndex === 0 ? "" : "glow"}>
+                    {"<"}
+                  </span>
+                </button>
+                <h2 className="px-2 py-1.5 glow cursor-pointer">
+                  <a
+                    className="underline focus:outline-none focus:glow hover:glow"
+                    href={socials[selectedIndex]?.link}
+                    target="_blank"
+                  >
+                    {socials[selectedIndex]?.title}                  
+                  </a>
+                </h2>
+                <button
+                  onClick={() => {
+                    setSelectedIndex((prevIndex) =>
+                      prevIndex < socials.length - 1 ? prevIndex + 1 : prevIndex
+                    );
+                  }}
+                >
+                  <span
+                    className={selectedIndex === socials.length - 1 ? "" : "glow"}
+                  >
+                    {">"}
+                  </span>
+                </button>
               </div>
-              <div className="flex w-full p-2 border-t-2 h-full border-t-prim">
+              <div className="flex w-full p-2 border-t-2 h-full text-[#fff] border-t-prim">
                 <div className="w-full h-full">
+                
                   {socials[selectedIndex]?.content}
                 </div>
               </div>

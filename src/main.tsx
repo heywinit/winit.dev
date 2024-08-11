@@ -1,28 +1,30 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import "cal-sans";
 
 // Lazy load components
-const HomePage = lazy(() => import("./pages/HomePage"));
+// const HomePage = lazy(() => import("./pages/HomePage"));
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const SocialsPage = lazy(() => import("./pages/SocialsPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const GalleryPage = lazy(() => import("./pages/GalleryPage"));
+const LoadingPage = lazy(() => import("./pages/LoadingPage"));
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <HomePage />
+      <Suspense fallback={<LoadingPage/>}>
+        <AboutPage />
+        {/* <HomePage /> */}
       </Suspense>
     ),
     errorElement: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage/>}>
         <ErrorPage />
       </Suspense>
     ),
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage/>}>
         <AboutPage />
       </Suspense>
     ),
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
   {
     path: "/projects",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage/>}>
         <ProjectsPage />
       </Suspense>
     ),
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
   {
     path: "/blog",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage/>}>
         <BlogPage />
       </Suspense>
     ),
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
   {
     path: "/gallery",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage/>}>
         <GalleryPage />
       </Suspense>
     ),
@@ -62,7 +64,7 @@ const router = createBrowserRouter([
   {
     path: "/socials",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage/>}>
         <SocialsPage />
       </Suspense>
     ),
