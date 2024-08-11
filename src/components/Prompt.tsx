@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function Prompt() {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(
-    ['projects', 'blogs', 'socials'].includes(window.location.href.split("/")[3]) || "about"
-  );
+  
+  const [currentPage, setCurrentPage] = useState(() => {
+    const path = window.location.href.split("/")[3];
+    return ["projects", "blog", "socials"].includes(path) ? path : "about";
+  });
+
   const [_, setIsEditing] = useState(true);
   const [isLargeScreen, setIsLargeScreen] = useState(true);
   const inputRef = useRef(null);
