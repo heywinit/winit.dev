@@ -4,9 +4,9 @@
 
 :root {
   /* Color variables */
-  --glow-color: #ff5500;
-  --glow-spread-color: #ff5500;
-  --enhanced-glow-color: #ff5500;
+  --glow-color: #17c574;
+  --glow-spread-color: #17c574;
+  --enhanced-glow-color: #17c574;
   --bg-color: #010000;
 
 
@@ -34,10 +34,10 @@
   }
 }
 
-h1 {
+/* h1 {
   animation: blink 12s infinite;
   -webkit-animation: blink 12s infinite;
-}
+} */
 
 /* 
 body {
@@ -52,7 +52,7 @@ body {
 .mono {
   font-family: "JetBrains Mono", monospace;
 }
-
+/* 
 @-webkit-keyframes blink {
   20%,
   24%,
@@ -97,4 +97,4 @@ body {
       0 0 98px #ffffff;
     color: var(--blink-color-2);
   }
-}
+} */
