@@ -44,7 +44,7 @@ const HighlightedText = ({
 };
 
 export default function BlogPage() {
-const wordsToHighlight = [
+  const wordsToHighlight = [
     "software developer",
     "avionics enthusiast",
     "india",
@@ -63,7 +63,15 @@ const wordsToHighlight = [
     "email",
     "youtube channel",
     "i'm here to connect",
-
+    "self-taught coder",
+    "12",
+    "7 years",
+    "professionally 4 years",
+    "qbasic, visual basic, java, javascript, and now golang",
+    "web",
+    "mobile",
+    "game",
+    "scalable and efficient software solutions",
   ];
   const highlightClass = "glow";
 
@@ -86,6 +94,15 @@ const wordsToHighlight = [
                 software development, aviation, and continuous learning.
               </p>
               <br />
+              <p>
+                i'm a self-taught coder, and i jumped into this rabbit hole when i was 12 years old, around 7 years ago
+                and professionally 4 years for now. the journey went from qbasic, visual basic, java, javascript, and now golang. 
+                i've worked on a variety of projects ranging from web
+                development to mobile apps and even some game development. i
+                enjoy working with modern technologies and frameworks to build
+                scalable and efficient software solutions.
+              </p>
+              <br/>
               <p>
                 my days are filled with coding, researching about fighter jets, and
                 studying about rockets, radars and missiles. if you're a fan of the f-117

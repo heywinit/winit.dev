@@ -5,11 +5,25 @@ import Prompt from "../components/Prompt";
 export default function BlogPage() {
   const blogs = [
     {
-      title: "blog 1",
-      content: "blogs coming soon",
+      title: "hello there!",
+      content: <p>
+        {">"} hello there!
+        <br/>
+        <br/>
+        so this is the first blog, the only one too, for a while atleast.
+        <br/>
+        <br/>
+        i will be posting stuff about my projects, thoughts, experiences and learnings here.
+        <br/>
+        <br/>
+        expect stuff related to software, avionics and some random stuff here. 
+        <br/>
+        <br/>
+        {">"} winit out.
+      </p>,
     },{
-      title: "blog 2",
-      content: "blogs coming soon",
+      title: "more soon",
+      content: "more soon",
     },
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
