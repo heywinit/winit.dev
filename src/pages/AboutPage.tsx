@@ -115,7 +115,7 @@ const wordsToHighlight = [
                 >
                   rootus
                 </a>
-                {", and "}
+                {", quattar (a rocket development ecosystem) and"}
                 <Link
                   className="underline focus:outline-none focus:text-p hover:text-p hover:cursor-pointer"
                   to="/projects"
