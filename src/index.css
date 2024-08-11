@@ -5,8 +5,9 @@
 :root {
   /* Color variables */
   --glow-color: #17c574;
-  --glow-spread-color: #17c574;
-  --enhanced-glow-color: #17c574;
+  --glow-color-alpha: #17c574aa;
+  --glow-spread-color: var(--glow-color);
+  --enhanced-glow-color: var(--glow-color);
   --bg-color: #010000;
 
 
